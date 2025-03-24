@@ -1,0 +1,51 @@
+--Aggregate functions
+--MIN
+--c = salary column
+
+select * from employees;
+
+select min(salary) from employees;
+
+--Department wise minimun salary
+
+select department_id,
+min(salary)
+from employees
+group by department_id
+order by department_id;
+
+--MAX
+--Departmeny wise maximum salary
+
+SELECT
+    department_id,
+    MAX(salary)
+FROM
+    employees
+GROUP BY
+    department_id
+ORDER BY
+    department_id;
+
+SELECT
+    department_id,
+    MAX(salary),
+    MIN(salary)
+FROM
+    employees
+GROUP BY
+    department_id
+ORDER BY
+    department_id;
+    
+--AVG
+--Department wise average salry
+
+SELECT
+    department_id,
+    AVG(salary)
+FROM
+    employees 
+    group by department_id
+ ORDER BY department_id;
+ 
