@@ -1,0 +1,79 @@
+--Display all student records.
+SELECT
+    *
+FROM
+    students;
+
+--Show only student names and genders.
+SELECT
+    studentname,
+    gender
+FROM
+    students;
+    
+--3.List students born after jan1,2002.
+SELECT
+    *
+FROM
+    students
+WHERE
+    dob > TO_DATE(' 2002 - 01 - 01', 'yyyy-mm-dd');
+    
+--4.find the total number of male and female students.
+SELECT
+    gender,
+    COUNT(*)
+FROM
+    students
+GROUP BY
+    gender;
+    
+--5.Display students sorted by dob (oldest to youngest).
+SELECT
+    *
+FROM
+    students
+ORDER BY
+    dob ASC;
+    
+--show students whose name starts with 's'.
+SELECT
+    *
+FROM
+    students
+WHERE
+    student_name LIKE 's';
+    
+--format dob as 'dd-mm-yyyy'.
+SELECT
+    studentname,
+    to_char(dob, 'dd-mm-yyyy') AS formatteddob
+FROM
+    students;
+    
+--display age of each student using sysdate - dob.
+SELECT
+    studentname,
+    floor(months_between(sysdate, dob) / 12) AS age
+FROM
+    students;
+    
+    
+--show all female students in descending order of names.
+SELECT
+    *
+FROM
+    students
+WHERE
+    gender = 'f'
+ORDER BY
+    studentname DESC;
+    
+--count how many students are born in each year
+SELECT
+    studentname,
+    COUNT(dob) AS per_year
+FROM
+    students
+GROUP BY
+    dob;
